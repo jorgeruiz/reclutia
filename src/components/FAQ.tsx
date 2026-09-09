@@ -1,3 +1,7 @@
+"use client";
+
+import FadeIn from "./FadeIn";
+
 const faqs = [
   {
     pregunta: "Como funciona el proceso de reclutamiento con Reclutia?",
@@ -39,21 +43,32 @@ const faqs = [
 export default function FAQ() {
   return (
     <section id="faq" className="py-20 bg-bg">
-      <div className="max-w-[800px] mx-auto px-6">
-        <h2 className="text-3xl font-heading font-bold tracking-[--heading-tracking] text-text mb-14">
-          Preguntas frecuentes
-        </h2>
+      <div className="max-w-[900px] mx-auto px-6">
+        <FadeIn>
+          <h2 className="text-3xl md:text-[2.5rem] font-heading font-bold tracking-[--heading-tracking] text-text mb-14 leading-tight">
+            Preguntas frecuentes
+          </h2>
+        </FadeIn>
 
-        <div className="flex flex-col gap-10">
-          {faqs.map((faq) => (
-            <div key={faq.pregunta}>
-              <h3 className="text-lg font-heading font-bold tracking-[--heading-tracking] text-text">
-                {faq.pregunta}
-              </h3>
-              <p className="text-text-muted text-base leading-relaxed mt-3">
-                {faq.respuesta}
-              </p>
-            </div>
+        <div className="flex flex-col">
+          {faqs.map((faq, i) => (
+            <FadeIn key={faq.pregunta} delay={i * 50}>
+              <div
+                className={`py-8 ${
+                  i < faqs.length - 1 ? "border-b border-border" : ""
+                }`}
+              >
+                <h3 className="text-lg font-heading font-bold tracking-[--heading-tracking] text-text flex items-start gap-3">
+                  <span className="text-primary font-mono text-sm mt-0.5 shrink-0">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  {faq.pregunta}
+                </h3>
+                <p className="text-text-muted text-base leading-relaxed mt-3 pl-9">
+                  {faq.respuesta}
+                </p>
+              </div>
+            </FadeIn>
           ))}
         </div>
       </div>

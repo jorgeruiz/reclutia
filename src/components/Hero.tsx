@@ -35,9 +35,9 @@ export default function Hero() {
         },
       });
 
-      // Text barely moves - stays on screen longer
+      // Text almost fixed - barely moves, disappears with the white fade
       gsap.to(text, {
-        yPercent: -10,
+        yPercent: -3,
         ease: "none",
         scrollTrigger: {
           trigger: section,
@@ -66,7 +66,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[160dvh] flex items-start justify-center overflow-hidden"
+      className="relative h-[120dvh] flex items-start justify-center overflow-hidden"
     >
       {/* Background image */}
       <div
@@ -85,7 +85,7 @@ export default function Hero() {
       {/* White fade overlay (animated on scroll) */}
       <div
         ref={overlayRef}
-        className="absolute inset-0 bg-bg pointer-events-none"
+        className="absolute inset-0 bg-bg pointer-events-none z-20"
         style={{ opacity: 0 }}
       />
 

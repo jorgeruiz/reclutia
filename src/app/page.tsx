@@ -25,10 +25,7 @@ export default function Home() {
       <Nosotros />
       <Servicios />
       <HeadhuntingReveal />
-      {/* Proceso + Diferenciadores continue on blue bg */}
-      <section id="proceso">
-        <ProcesoTimeline />
-      </section>
+      <ProcesoTimeline />
       <Diferenciadores />
       <ServiciosComplementarios />
       <FAQ />

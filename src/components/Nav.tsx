@@ -22,9 +22,9 @@ export default function Nav() {
           <Image
             src="/images/logo.webp"
             alt="Reclutia - Socios Estrategicos en Talento"
-            width={120}
-            height={40}
-            className="h-8 w-auto object-contain"
+            width={200}
+            height={66}
+            className="h-14 w-auto object-contain"
             priority
           />
         </a>

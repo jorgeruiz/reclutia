@@ -1,6 +1,7 @@
 "use client";
 
 import FadeIn from "./FadeIn";
+import { Plus } from "@phosphor-icons/react";
 
 const faqs = [
   {
@@ -43,33 +44,53 @@ const faqs = [
 export default function FAQ() {
   return (
     <section id="faq" className="py-20 bg-bg">
-      <div className="max-w-[900px] mx-auto px-6">
-        <FadeIn>
-          <h2 className="text-3xl md:text-[2.5rem] font-heading font-bold tracking-[--heading-tracking] text-text mb-14 leading-tight">
-            Preguntas frecuentes
-          </h2>
-        </FadeIn>
+      <div className="max-w-[1280px] mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.4fr_1fr] gap-10 lg:gap-20">
+          {/* Left: heading */}
+          <FadeIn>
+            <div className="lg:sticky lg:top-28">
+              <h2 className="text-3xl md:text-[2.5rem] font-heading font-bold tracking-[--heading-tracking] text-text leading-tight">
+                Preguntas frecuentes
+              </h2>
+              <p className="text-text-muted text-base leading-relaxed mt-4">
+                Si tienes otra duda, escribenos a{" "}
+                <a
+                  href="mailto:hugo.cortes@reclutia.com"
+                  className="text-primary font-medium hover:underline"
+                >
+                  hugo.cortes@reclutia.com
+                </a>
+              </p>
+            </div>
+          </FadeIn>
 
-        <div className="flex flex-col">
-          {faqs.map((faq, i) => (
-            <FadeIn key={faq.pregunta} delay={i * 50}>
-              <div
-                className={`py-8 ${
-                  i < faqs.length - 1 ? "border-b border-border" : ""
-                }`}
-              >
-                <h3 className="text-lg font-heading font-bold tracking-[--heading-tracking] text-text flex items-start gap-3">
-                  <span className="text-primary font-mono text-sm mt-0.5 shrink-0">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  {faq.pregunta}
-                </h3>
-                <p className="text-text-muted text-base leading-relaxed mt-3 pl-9">
-                  {faq.respuesta}
-                </p>
-              </div>
-            </FadeIn>
-          ))}
+          {/* Right: accordion */}
+          <div className="flex flex-col">
+            {faqs.map((faq, i) => (
+              <FadeIn key={faq.pregunta} delay={i * 40}>
+                <details
+                  className="group border-b border-border"
+                  {...(i < 3 ? { open: true } : {})}
+                >
+                  <summary className="flex items-center justify-between gap-4 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                    <h3 className="text-base font-heading font-semibold text-text pr-4">
+                      {faq.pregunta}
+                    </h3>
+                    <div className="w-7 h-7 rounded-full border border-border flex items-center justify-center shrink-0 transition-all duration-200 group-open:rotate-45 group-open:bg-primary group-open:border-primary">
+                      <Plus
+                        size={14}
+                        weight="bold"
+                        className="text-text-muted group-open:text-on-primary transition-colors duration-200"
+                      />
+                    </div>
+                  </summary>
+                  <p className="text-text-muted text-base leading-relaxed pb-5 pr-12">
+                    {faq.respuesta}
+                  </p>
+                </details>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </div>
     </section>

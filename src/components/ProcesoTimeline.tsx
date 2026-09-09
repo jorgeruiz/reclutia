@@ -206,7 +206,7 @@ export default function ProcesoTimeline() {
   }, [pathHeight]);
 
   return (
-    <section className="py-20 bg-text">
+    <section id="proceso" className="py-20 bg-text">
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-heading font-bold tracking-[--heading-tracking] text-on-primary">

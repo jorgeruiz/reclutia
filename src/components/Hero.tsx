@@ -23,9 +23,9 @@ export default function Hero() {
     if (mq.matches) return;
 
     const ctx = gsap.context(() => {
-      // Parallax: bg moves slower, text moves faster
+      // Parallax: bg moves faster (out), text moves much slower (stays)
       gsap.to(bg, {
-        yPercent: 20,
+        yPercent: 30,
         ease: "none",
         scrollTrigger: {
           trigger: section,
@@ -35,8 +35,9 @@ export default function Hero() {
         },
       });
 
+      // Text barely moves - stays on screen longer
       gsap.to(text, {
-        yPercent: -30,
+        yPercent: -10,
         ease: "none",
         scrollTrigger: {
           trigger: section,
@@ -46,14 +47,14 @@ export default function Hero() {
         },
       });
 
-      // Fade to white overlay
+      // Fade to white - starts earlier and completes faster
       gsap.to(overlay, {
         opacity: 1,
         ease: "none",
         scrollTrigger: {
           trigger: section,
-          start: "60% top",
-          end: "bottom top",
+          start: "30% top",
+          end: "65% top",
           scrub: true,
         },
       });
@@ -65,12 +66,12 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden"
+      className="relative h-[160dvh] flex items-start justify-center overflow-hidden"
     >
       {/* Background image */}
       <div
         ref={bgRef}
-        className="absolute inset-0 -top-[10%] -bottom-[10%]"
+        className="absolute inset-0 -top-[15%] -bottom-[15%]"
         style={{ willChange: "transform" }}
       >
         <div
@@ -88,10 +89,10 @@ export default function Hero() {
         style={{ opacity: 0 }}
       />
 
-      {/* Centered title */}
+      {/* Centered title - wider, smaller, max 3 lines */}
       <h1
         ref={textRef}
-        className="relative z-10 text-4xl md:text-[3.75rem] lg:text-[4.5rem] font-heading font-extrabold tracking-[--heading-tracking] text-on-primary leading-[1.05] text-center max-w-[16ch] px-6"
+        className="relative z-10 text-3xl md:text-[2.75rem] lg:text-[3.5rem] font-heading font-extrabold tracking-[--heading-tracking] text-on-primary leading-[1.1] text-center max-w-[28ch] px-6 pt-[35dvh]"
         style={{ willChange: "transform" }}
       >
         Reclutamiento y seleccion de personal para empresas de alto desempeno

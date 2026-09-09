@@ -24,17 +24,17 @@ export default function HeadhuntingReveal() {
     }
 
     const ctx = gsap.context(() => {
-      // Blue fill expands from center when section is 70% in viewport
+      // Instant blue fill at 85% viewport entry
       ScrollTrigger.create({
         trigger: section,
-        start: "top 30%",
-        end: "top 10%",
-        scrub: true,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          bg.style.transform = `scaleY(${progress})`;
-          if (progress > 0.7 && !filled) setFilled(true);
-          if (progress < 0.3 && filled) setFilled(false);
+        start: "top 85%",
+        onEnter: () => {
+          bg.style.transform = "scaleY(1)";
+          setFilled(true);
+        },
+        onLeaveBack: () => {
+          bg.style.transform = "scaleY(0)";
+          setFilled(false);
         },
       });
     }, section);
@@ -51,8 +51,8 @@ export default function HeadhuntingReveal() {
       {/* Animated blue background */}
       <div
         ref={bgRef}
-        className="absolute inset-0 bg-text origin-center"
-        style={{ transform: "scaleY(0)", willChange: "transform" }}
+        className="absolute inset-0 bg-text origin-center transition-transform duration-300"
+        style={{ transform: "scaleY(0)", transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}
       />
 
       <div className="relative z-10 max-w-[1280px] mx-auto px-6">

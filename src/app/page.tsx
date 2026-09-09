@@ -2,6 +2,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { faqPageSchema, serviceSchemas } from "@/lib/schemas";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import Nosotros from "@/components/Nosotros";
 import Servicios from "@/components/Servicios";
 import HeadhuntingReveal from "@/components/HeadhuntingReveal";
 import ProcesoTimeline from "@/components/ProcesoTimeline";
@@ -21,10 +22,10 @@ export default function Home() {
 
       <Nav />
       <Hero />
+      <Nosotros />
       <Servicios />
-      <section id="headhunting">
-        <HeadhuntingReveal />
-      </section>
+      <HeadhuntingReveal />
+      {/* Proceso + Diferenciadores continue on blue bg */}
       <section id="proceso">
         <ProcesoTimeline />
       </section>

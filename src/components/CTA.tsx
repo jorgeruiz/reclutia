@@ -2,37 +2,82 @@
 
 import { useState } from "react";
 import FadeIn from "./FadeIn";
-import { PaperPlaneTilt } from "@phosphor-icons/react";
+import {
+  PaperPlaneTilt,
+  EnvelopeSimple,
+  MapPin,
+  Globe,
+} from "@phosphor-icons/react";
 
 export default function CTA() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section id="contacto" className="py-24 bg-surface">
-      <div className="max-w-[1280px] mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Left: text */}
+    <section id="contacto" className="relative py-24 bg-bg overflow-hidden">
+      {/* Decorative bg element */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-surface rounded-l-[80px] hidden lg:block" />
+
+      <div className="relative z-10 max-w-[1280px] mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-20">
+          {/* Left: text + contact info */}
           <FadeIn>
-            <div>
-              <h2 className="text-3xl md:text-[2.5rem] font-heading font-bold tracking-[--heading-tracking] text-text leading-tight">
-                Encuentra al talento ideal para tu empresa
+            <div className="lg:pr-8">
+              <h2 className="text-3xl md:text-[2.75rem] font-heading font-bold tracking-[--heading-tracking] text-text leading-tight">
+                Hablemos de lo que tu empresa necesita
               </h2>
-              <p className="text-text-muted text-lg leading-relaxed mt-4 max-w-[45ch]">
-                Cuentanos que perfil necesitas y te ayudamos a encontrarlo. La
-                primera consulta es sin compromiso.
+              <p className="text-text-muted text-lg leading-relaxed mt-5 max-w-[45ch]">
+                Cuentanos que perfil buscas. La primera consulta es sin
+                compromiso y te damos una propuesta clara.
               </p>
 
-              <div className="mt-10 space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <PaperPlaneTilt size={16} weight="regular" className="text-primary" />
+              <div className="mt-10 space-y-5">
+                <div className="flex items-center gap-4">
+                  <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <EnvelopeSimple
+                      size={20}
+                      weight="regular"
+                      className="text-primary"
+                    />
                   </div>
-                  <a
-                    href="mailto:hugo.cortes@reclutia.com"
-                    className="text-text font-medium hover:text-primary transition-colors duration-200"
-                  >
-                    hugo.cortes@reclutia.com
-                  </a>
+                  <div>
+                    <p className="text-sm text-text-muted">Correo</p>
+                    <a
+                      href="mailto:hugo.cortes@reclutia.com"
+                      className="text-text font-medium hover:text-primary transition-colors duration-200"
+                    >
+                      hugo.cortes@reclutia.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <MapPin
+                      size={20}
+                      weight="regular"
+                      className="text-primary"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-sm text-text-muted">Ubicacion</p>
+                    <p className="text-text font-medium">Monterrey, Mexico</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <Globe
+                      size={20}
+                      weight="regular"
+                      className="text-primary"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-sm text-text-muted">Cobertura</p>
+                    <p className="text-text font-medium">
+                      Mexico y Estados Unidos
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -40,17 +85,21 @@ export default function CTA() {
 
           {/* Right: form */}
           <FadeIn delay={100}>
-            <div className="bg-bg rounded-[8px] shadow-[0_4px_40px_rgba(10,30,63,0.08)] border border-border/50 p-8">
+            <div className="bg-bg rounded-[16px] shadow-[0_8px_60px_rgba(10,30,63,0.10)] border border-border/60 p-8 md:p-10">
               {submitted ? (
-                <div className="text-center py-12">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <PaperPlaneTilt size={24} weight="regular" className="text-primary" />
+                <div className="text-center py-16">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5">
+                    <PaperPlaneTilt
+                      size={28}
+                      weight="regular"
+                      className="text-primary"
+                    />
                   </div>
-                  <h3 className="text-xl font-heading font-bold text-text">
+                  <h3 className="text-2xl font-heading font-bold text-text">
                     Mensaje enviado
                   </h3>
-                  <p className="text-text-muted text-base mt-2">
-                    Nos pondremos en contacto contigo pronto.
+                  <p className="text-text-muted text-base mt-3 max-w-[30ch] mx-auto">
+                    Nos pondremos en contacto contigo en las proximas 24 horas.
                   </p>
                 </div>
               ) : (
@@ -65,7 +114,11 @@ export default function CTA() {
                   }}
                   className="space-y-5"
                 >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <h3 className="text-xl font-heading font-bold text-text mb-2">
+                    Pide informacion
+                  </h3>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label
                         htmlFor="nombre"
@@ -79,7 +132,7 @@ export default function CTA() {
                         type="text"
                         required
                         placeholder="Tu nombre"
-                        className="w-full px-4 py-3 bg-surface border border-border rounded-[8px] text-text text-base placeholder:text-text-muted/50 transition-colors duration-200 focus:border-primary focus:outline-none"
+                        className="w-full px-4 py-3 bg-surface border border-border rounded-[8px] text-text text-base placeholder:text-text-muted/40 transition-colors duration-200 focus:border-primary focus:outline-none"
                       />
                     </div>
                     <div>
@@ -95,7 +148,7 @@ export default function CTA() {
                         type="text"
                         required
                         placeholder="Nombre de tu empresa"
-                        className="w-full px-4 py-3 bg-surface border border-border rounded-[8px] text-text text-base placeholder:text-text-muted/50 transition-colors duration-200 focus:border-primary focus:outline-none"
+                        className="w-full px-4 py-3 bg-surface border border-border rounded-[8px] text-text text-base placeholder:text-text-muted/40 transition-colors duration-200 focus:border-primary focus:outline-none"
                       />
                     </div>
                   </div>
@@ -113,7 +166,7 @@ export default function CTA() {
                       type="email"
                       required
                       placeholder="tu@empresa.com"
-                      className="w-full px-4 py-3 bg-surface border border-border rounded-[8px] text-text text-base placeholder:text-text-muted/50 transition-colors duration-200 focus:border-primary focus:outline-none"
+                      className="w-full px-4 py-3 bg-surface border border-border rounded-[8px] text-text text-base placeholder:text-text-muted/40 transition-colors duration-200 focus:border-primary focus:outline-none"
                     />
                   </div>
 
@@ -130,16 +183,16 @@ export default function CTA() {
                       rows={4}
                       required
                       placeholder="Que tipo de perfil buscas, cuantas vacantes, urgencia..."
-                      className="w-full px-4 py-3 bg-surface border border-border rounded-[8px] text-text text-base placeholder:text-text-muted/50 transition-colors duration-200 focus:border-primary focus:outline-none resize-none"
+                      className="w-full px-4 py-3 bg-surface border border-border rounded-[8px] text-text text-base placeholder:text-text-muted/40 transition-colors duration-200 focus:border-primary focus:outline-none resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full px-8 py-3.5 bg-primary text-on-primary font-body font-medium text-base rounded-full transition-transform duration-200 active:scale-[0.98] hover:brightness-110"
+                    className="w-full px-8 py-4 bg-primary text-on-primary font-body font-semibold text-base rounded-full transition-transform duration-200 active:scale-[0.98] hover:brightness-110"
                     style={{ transitionTimingFunction: "var(--easing)" }}
                   >
-                    Pide informacion
+                    Enviar mensaje
                   </button>
                 </form>
               )}

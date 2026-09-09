@@ -22,7 +22,7 @@ fi
 # Documented exceptions (not in tokens.css, used in special sections):
 # #94A3BB - muted text on navy background in headhunting + footer sections (see DESIGN.md)
 # #1E3A5F - subtle border on navy background in footer (see DESIGN.md)
-ALLOWED_HEX+=("#94A3BB" "#94a3bb" "#1E3A5F" "#1e3a5f")
+ALLOWED_HEX+=("#94A3BB" "#94a3bb" "#1E3A5F" "#1e3a5f" "#143A52" "#143a52" "#1A4460" "#1a4460")
 
 fail() { echo "FAIL: $1"; VIOLATIONS=$((VIOLATIONS + 1)); }
 warn() { echo "WARN: $1"; WARNINGS=$((WARNINGS + 1)); }

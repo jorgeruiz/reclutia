@@ -107,10 +107,10 @@ function PasoCard({
           <span className="font-mono text-primary text-sm font-medium">
             {paso.numero}
           </span>
-          <h3 className="text-2xl font-heading font-bold tracking-[--heading-tracking] text-text mt-1">
+          <h3 className="text-2xl font-heading font-bold tracking-[--heading-tracking] text-on-primary mt-1">
             {paso.titulo}
           </h3>
-          <p className="text-text-muted text-base leading-relaxed mt-3">
+          <p className="text-[#94A3BB] text-base leading-relaxed mt-3">
             {paso.descripcion}
           </p>
         </div>
@@ -122,7 +122,7 @@ function PasoCard({
           className={`
             w-4 h-4 rounded-full border-2 border-primary
             transition-colors duration-300
-            ${visible ? "bg-primary" : "bg-bg"}
+            ${visible ? "bg-primary" : "bg-text"}
           `}
           style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}
         />
@@ -206,13 +206,13 @@ export default function ProcesoTimeline() {
   }, [pathHeight]);
 
   return (
-    <section className="py-20 bg-bg">
+    <section className="py-20 bg-text">
       <div className="max-w-[1280px] mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-heading font-bold tracking-[--heading-tracking] text-text">
+          <h2 className="text-3xl font-heading font-bold tracking-[--heading-tracking] text-on-primary">
             Nuestro proceso de seleccion
           </h2>
-          <p className="text-text-muted text-lg mt-4 max-w-[55ch] mx-auto leading-relaxed">
+          <p className="text-[#94A3BB] text-lg mt-4 max-w-[55ch] mx-auto leading-relaxed">
             Un metodo estructurado que garantiza candidatos alineados a tu
             empresa, paso a paso.
           </p>

@@ -61,7 +61,7 @@ export default function HeadhuntingReveal() {
       />
 
       <div className="relative z-10 max-w-[1280px] mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-stretch">
           {/* Text content */}
           <div>
             <span
@@ -121,7 +121,7 @@ export default function HeadhuntingReveal() {
           </div>
 
           {/* Image */}
-          <div className="relative w-full aspect-[4/3] rounded-[8px] overflow-hidden shadow-[0_8px_60px_rgba(10,30,63,0.15)]">
+          <div className="relative w-full h-full min-h-[300px] rounded-[8px] overflow-hidden shadow-[0_8px_60px_rgba(10,30,63,0.15)]">
             <Image
               src="/images/headhunting-ejecutivo.webp"
               alt="Headhunting ejecutivo - talento directivo"

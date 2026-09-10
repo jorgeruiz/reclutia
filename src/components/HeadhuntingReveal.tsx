@@ -29,7 +29,7 @@ export default function HeadhuntingReveal() {
       // Snap to blue when section covers the full viewport (top hits top)
       ScrollTrigger.create({
         trigger: section,
-        start: "top top",
+        start: "top 15%",
         onEnter: () => {
           bg.style.transform = "scaleY(1)";
           setFilled(true);

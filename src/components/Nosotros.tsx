@@ -43,12 +43,6 @@ export default function Nosotros() {
                 encontrar personas que compartan la cultura, los valores y la
                 forma de trabajar de tu empresa.
               </p>
-              <p className="text-text-muted text-base leading-relaxed mt-4">
-                Ademas del reclutamiento, ofrecemos servicios complementarios
-                como psicometria, investigaciones laborales, pruebas de
-                confianza, asesoria legal laboral y cumplimiento de NOM-035.
-              </p>
-
               {/* Stats grid */}
               <div className="grid grid-cols-2 gap-6 mt-10">
                 {stats.map((stat) => {

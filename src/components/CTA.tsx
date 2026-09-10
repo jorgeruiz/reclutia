@@ -14,8 +14,14 @@ export default function CTA() {
 
   return (
     <section id="contacto" className="relative py-24 bg-bg overflow-hidden">
-      {/* Decorative bg element */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-surface rounded-l-[80px] hidden lg:block" />
+      {/* Blurred image background on right half */}
+      <div className="absolute top-0 right-0 w-1/2 h-full hidden lg:block overflow-hidden rounded-l-[80px]">
+        <div
+          className="absolute inset-0 bg-cover bg-center blur-[8px] scale-110"
+          style={{ backgroundImage: "url(/images/diferenciador-cultura.webp)" }}
+        />
+        <div className="absolute inset-0 bg-bg/40" />
+      </div>
 
       <div className="relative z-10 max-w-[1280px] mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-20">

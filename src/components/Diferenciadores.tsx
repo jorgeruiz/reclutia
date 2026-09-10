@@ -49,7 +49,7 @@ export default function Diferenciadores() {
             const Icon = d.icon;
             return (
               <FadeIn key={d.titulo} delay={i * 100}>
-                <div className="bg-[#143A52] rounded-[8px] p-8 h-full border border-[#1E3A5F] transition-all duration-200 hover:border-primary/40 hover:bg-[#1A4460]">
+                <div className="rounded-[12px] p-8 h-full border border-on-primary/10 transition-all duration-200 hover:border-on-primary/20 backdrop-blur-[16px]" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 32px rgba(0,0,0,0.2)" }}>
                   <div className="w-12 h-12 rounded-full bg-brand-gradient flex items-center justify-center mb-6">
                     <Icon
                       size={24}

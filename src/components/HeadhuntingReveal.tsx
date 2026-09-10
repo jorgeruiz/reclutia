@@ -11,6 +11,7 @@ export default function HeadhuntingReveal() {
   const sectionRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const [filled, setFilled] = useState(false);
+  const filledRef = useRef(false);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -27,14 +28,18 @@ export default function HeadhuntingReveal() {
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: section,
-        start: "top 85%",
-        onEnter: () => {
-          bg.style.transform = "scaleY(1)";
-          setFilled(true);
-        },
-        onLeaveBack: () => {
-          bg.style.transform = "scaleY(0)";
-          setFilled(false);
+        start: "top bottom",
+        end: "bottom top",
+        onUpdate: (self) => {
+          if (self.progress >= 0.8 && !filledRef.current) {
+            bg.style.transform = "scaleY(1)";
+            setFilled(true);
+            filledRef.current = true;
+          } else if (self.progress < 0.8 && filledRef.current) {
+            bg.style.transform = "scaleY(0)";
+            setFilled(false);
+            filledRef.current = false;
+          }
         },
       });
     }, section);

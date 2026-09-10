@@ -26,20 +26,19 @@ export default function HeadhuntingReveal() {
     }
 
     const ctx = gsap.context(() => {
+      // Snap to blue when section covers the full viewport (top hits top)
       ScrollTrigger.create({
         trigger: section,
-        start: "top bottom",
-        end: "bottom top",
-        onUpdate: (self) => {
-          if (self.progress >= 0.8 && !filledRef.current) {
-            bg.style.transform = "scaleY(1)";
-            setFilled(true);
-            filledRef.current = true;
-          } else if (self.progress < 0.8 && filledRef.current) {
-            bg.style.transform = "scaleY(0)";
-            setFilled(false);
-            filledRef.current = false;
-          }
+        start: "top top",
+        onEnter: () => {
+          bg.style.transform = "scaleY(1)";
+          setFilled(true);
+          filledRef.current = true;
+        },
+        onLeaveBack: () => {
+          bg.style.transform = "scaleY(0)";
+          setFilled(false);
+          filledRef.current = false;
         },
       });
     }, section);
@@ -52,7 +51,7 @@ export default function HeadhuntingReveal() {
     <section
       ref={sectionRef}
       id="headhunting"
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative min-h-[100dvh] flex items-center overflow-hidden py-20"
     >
       {/* Animated blue background */}
       <div

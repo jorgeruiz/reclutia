@@ -76,7 +76,7 @@ export default function FAQ() {
                     <h3 className="text-base font-heading font-semibold text-text pr-4">
                       {faq.pregunta}
                     </h3>
-                    <div className="w-7 h-7 rounded-full border border-border flex items-center justify-center shrink-0 transition-all duration-200 group-open:rotate-45 group-open:bg-primary group-open:border-primary">
+                    <div className="w-7 h-7 rounded-full border border-border flex items-center justify-center shrink-0 transition-all duration-200 group-open:rotate-45 group-open:bg-brand-gradient group-open:border-transparent">
                       <Plus
                         size={14}
                         weight="bold"

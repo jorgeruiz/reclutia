@@ -189,7 +189,7 @@ export default function CTA() {
 
                   <button
                     type="submit"
-                    className="w-full px-8 py-4 bg-primary text-on-primary font-body font-semibold text-base rounded-full transition-transform duration-200 active:scale-[0.98] hover:brightness-110"
+                    className="w-full px-8 py-4 bg-brand-gradient text-on-primary font-body font-semibold text-base rounded-full transition-transform duration-200 active:scale-[0.98] hover:brightness-110"
                     style={{ transitionTimingFunction: "var(--easing)" }}
                   >
                     Enviar mensaje

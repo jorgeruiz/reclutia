@@ -32,8 +32,9 @@ export default function Nosotros() {
           {/* Right: text content */}
           <FadeIn delay={100}>
             <div>
-              <h2 className="text-3xl md:text-[2.5rem] font-heading font-bold tracking-[--heading-tracking] text-text leading-tight">
-                Tu socio estrategico en talento
+              <h2 className="text-3xl md:text-[2.5rem] font-heading font-bold tracking-[--heading-tracking] leading-tight">
+                <span className="text-text">Tu socio estrategico en </span>
+                <span className="text-brand-gradient">talento</span>
               </h2>
               <p className="text-text-muted text-lg leading-relaxed mt-5">
                 Somos una agencia de reclutamiento y seleccion de personal que
@@ -71,7 +72,7 @@ export default function Nosotros() {
 
               <a
                 href="#contacto"
-                className="inline-flex items-center gap-2 mt-10 px-8 py-3.5 bg-primary text-on-primary font-body font-medium text-base rounded-full transition-transform duration-200 active:scale-[0.98] hover:brightness-110"
+                className="inline-flex items-center gap-2 mt-10 px-8 py-3.5 bg-brand-gradient text-on-primary font-body font-medium text-base rounded-full transition-transform duration-200 active:scale-[0.98] hover:brightness-110"
                 style={{ transitionTimingFunction: "var(--easing)" }}
               >
                 Pide informacion
@@ -82,7 +83,7 @@ export default function Nosotros() {
 
         {/* AEO summary - subtle, indexable */}
         <div className="mt-16">
-          <p className="text-text-muted text-sm leading-relaxed max-w-[90ch] border-l-2 border-primary pl-4">
+          <p className="text-text-muted text-sm leading-relaxed max-w-[90ch] border-l-2 border-brand-gradient pl-4">
             Reclutia es una agencia de reclutamiento y seleccion de personal con
             sede en Mexico que opera a nivel nacional e internacional, incluyendo
             cobertura bilingue para empresas en Estados Unidos y Mexico.

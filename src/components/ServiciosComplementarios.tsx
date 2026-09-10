@@ -71,11 +71,11 @@ export default function ServiciosComplementarios() {
             return (
               <FadeIn key={s.titulo} delay={i * 60}>
                 <div className="bg-bg rounded-[8px] p-6 border border-border/50 h-full transition-shadow duration-200 hover:shadow-[0_4px_30px_rgba(10,30,63,0.06)]">
-                  <div className="w-10 h-10 rounded-[8px] bg-primary/10 flex items-center justify-center mb-4">
+                  <div className="w-10 h-10 rounded-[8px] bg-brand-gradient flex items-center justify-center mb-4">
                     <Icon
                       size={20}
                       weight="regular"
-                      className="text-primary"
+                      className="text-on-primary"
                     />
                   </div>
                   <h3 className="text-lg font-heading font-bold tracking-[--heading-tracking] text-text">

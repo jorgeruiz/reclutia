@@ -31,6 +31,22 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
+/* Brand gradient - matches logo blue gradient */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #2D6CDF 0%, #143A52 100%);
+}
+
+.text-brand-gradient {
+  background: linear-gradient(135deg, #2D6CDF 0%, #0A1E3F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.border-brand-gradient {
+  border-image: linear-gradient(135deg, #2D6CDF 0%, #143A52 100%) 1;
+}
+
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;

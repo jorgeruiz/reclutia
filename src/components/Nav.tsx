@@ -47,7 +47,7 @@ export default function Nav() {
         {/* Desktop CTA */}
         <a
           href="#contacto"
-          className="hidden lg:inline-flex items-center px-6 py-2.5 bg-primary text-on-primary text-sm font-body font-medium rounded-full transition-transform duration-200 active:scale-[0.98] hover:brightness-110"
+          className="hidden lg:inline-flex items-center px-6 py-2.5 bg-brand-gradient text-on-primary text-sm font-body font-medium rounded-full transition-transform duration-200 active:scale-[0.98] hover:brightness-110"
           style={{ transitionTimingFunction: "var(--easing)" }}
         >
           Pide informacion
@@ -111,7 +111,7 @@ export default function Nav() {
               <a
                 href="#contacto"
                 onClick={() => setOpen(false)}
-                className="inline-flex px-8 py-3.5 bg-primary text-on-primary font-body font-medium rounded-full"
+                className="inline-flex px-8 py-3.5 bg-brand-gradient text-on-primary font-body font-medium rounded-full"
               >
                 Pide informacion
               </a>

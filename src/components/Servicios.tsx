@@ -77,7 +77,7 @@ export default function Servicios() {
                   onMouseLeave={() => setActiveIndex(null)}
                 >
                   <div className="flex items-center gap-5">
-                    <div className="w-10 h-10 rounded-[8px] bg-primary/10 flex items-center justify-center shrink-0 transition-colors duration-200 group-hover:bg-primary">
+                    <div className="w-10 h-10 rounded-[8px] bg-primary/10 flex items-center justify-center shrink-0 transition-all duration-200 group-hover:bg-brand-gradient">
                       <Icon
                         size={20}
                         weight="regular"
@@ -142,7 +142,7 @@ export default function Servicios() {
           <div className="mt-10">
             <a
               href="#contacto"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-on-primary font-body font-medium text-base rounded-full transition-transform duration-200 active:scale-[0.98] hover:brightness-110"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-brand-gradient text-on-primary font-body font-medium text-base rounded-full transition-transform duration-200 active:scale-[0.98] hover:brightness-110"
               style={{ transitionTimingFunction: "var(--easing)" }}
             >
               Cotiza tu proceso de seleccion

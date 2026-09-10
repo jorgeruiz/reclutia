@@ -50,11 +50,11 @@ export default function Diferenciadores() {
             return (
               <FadeIn key={d.titulo} delay={i * 100}>
                 <div className="bg-[#143A52] rounded-[8px] p-8 h-full border border-[#1E3A5F] transition-all duration-200 hover:border-primary/40 hover:bg-[#1A4460]">
-                  <div className="w-12 h-12 rounded-full bg-primary/15 flex items-center justify-center mb-6">
+                  <div className="w-12 h-12 rounded-full bg-brand-gradient flex items-center justify-center mb-6">
                     <Icon
                       size={24}
                       weight="regular"
-                      className="text-primary"
+                      className="text-on-primary"
                     />
                   </div>
                   <h3 className="text-xl font-heading font-bold tracking-[--heading-tracking] text-on-primary">

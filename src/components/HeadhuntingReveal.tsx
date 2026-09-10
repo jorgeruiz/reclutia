@@ -19,12 +19,12 @@ export default function HeadhuntingReveal() {
 
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mq.matches) {
+      bg.style.transform = "scaleY(1)";
       setFilled(true);
       return;
     }
 
     const ctx = gsap.context(() => {
-      // Instant blue fill at 85% viewport entry
       ScrollTrigger.create({
         trigger: section,
         start: "top 85%",
@@ -40,7 +40,8 @@ export default function HeadhuntingReveal() {
     }, section);
 
     return () => ctx.revert();
-  }, [filled]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section

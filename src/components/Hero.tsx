@@ -41,8 +41,8 @@ export default function Hero() {
         ease: "none",
         scrollTrigger: {
           trigger: section,
-          start: "30% top",
-          end: "70% top",
+          start: "15% top",
+          end: "55% top",
           scrub: true,
         },
       });

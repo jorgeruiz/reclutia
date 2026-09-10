@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import FadeIn from "./FadeIn";
 import { MapPin, Globe, Clock, UsersFour } from "@phosphor-icons/react";
 
@@ -19,13 +18,15 @@ export default function Nosotros() {
           {/* Left: image */}
           <FadeIn>
             <div className="relative w-full aspect-[4/3] rounded-[8px] overflow-hidden shadow-[0_8px_60px_rgba(10,30,63,0.10)]">
-              <Image
-                src="/images/diferenciador-cultura.webp"
-                alt="Equipo de Reclutia colaborando"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src="/images/nosotros-video.mp4" type="video/mp4" />
+              </video>
             </div>
           </FadeIn>
 

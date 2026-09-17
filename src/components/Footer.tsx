@@ -10,9 +10,9 @@ export default function Footer() {
             <Image
               src="/images/logo.webp"
               alt="Reclutia"
-              width={120}
-              height={40}
-              className="h-8 w-auto object-contain brightness-0 invert"
+              width={280}
+              height={144}
+              className="h-24 w-auto object-contain brightness-0 invert"
             />
             <p className="text-[#94A3BB] text-sm leading-relaxed mt-4 max-w-[30ch]">
               Socios estrategicos en talento. Reclutamiento y seleccion de

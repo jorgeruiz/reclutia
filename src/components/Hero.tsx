@@ -77,7 +77,7 @@ export default function Hero() {
       />
 
       {/* Sticky text */}
-      <div className="sticky top-0 h-[100dvh] flex flex-col items-center justify-center z-10 px-6">
+      <div data-hero-content className="sticky top-0 h-[100dvh] flex flex-col items-center justify-center z-10 px-6">
         <h1 className="text-3xl md:text-[2.75rem] lg:text-[3.5rem] font-heading font-extrabold tracking-[--heading-tracking] text-on-primary leading-[1.1] text-center max-w-[28ch]">
           Reclutamiento y seleccion de personal para empresas de alto desempeno
         </h1>

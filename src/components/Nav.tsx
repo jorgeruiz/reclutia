@@ -15,7 +15,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 px-4 pt-4">
+    <header data-nav className="fixed top-0 left-0 right-0 z-40 px-4 pt-4">
       <nav className="max-w-[1280px] mx-auto flex items-center justify-between bg-bg/90 backdrop-blur-[12px] border border-border rounded-full px-6 py-3">
         {/* Logo */}
         <a href="/" className="shrink-0">

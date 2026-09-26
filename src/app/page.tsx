@@ -2,6 +2,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { faqPageSchema, serviceSchemas } from "@/lib/schemas";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import HeroIntro from "@/components/HeroIntro";
 import Nosotros from "@/components/Nosotros";
 import Servicios from "@/components/Servicios";
 import HeadhuntingReveal from "@/components/HeadhuntingReveal";
@@ -20,6 +21,7 @@ export default function Home() {
         <JsonLd key={i} data={schema} />
       ))}
 
+      <HeroIntro />
       <Nav />
       <Hero />
       <Nosotros />

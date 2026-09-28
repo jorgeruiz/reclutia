@@ -231,17 +231,17 @@ export default function HeroIntro() {
 
   /* shared ring style */
   const ringClass =
-    "absolute w-28 h-28 rounded-full border border-on-primary/20 pointer-events-none";
+    "absolute w-28 h-28 rounded-full border border-primary/15 pointer-events-none";
 
   return (
     <div
       ref={overlayRef}
       className="fixed inset-0 z-50 flex flex-col items-center justify-center"
     >
-      {/* Solid dark base */}
-      <div className="absolute inset-0 bg-text" />
+      {/* Solid light base */}
+      <div className="absolute inset-0 bg-bg" />
 
-      {/* Blurred video + tint */}
+      {/* Blurred video + light glass tint */}
       <div ref={bgRef} className="absolute inset-0" style={{ opacity: 0 }}>
         <video
           autoPlay
@@ -252,7 +252,7 @@ export default function HeroIntro() {
         >
           <source src="/images/hero-video.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-text/55" />
+        <div className="absolute inset-0 bg-bg/75 backdrop-blur-[4px]" />
       </div>
 
       {/* Center content */}
@@ -275,8 +275,7 @@ export default function HeroIntro() {
             alt=""
             width={120}
             height={120}
-            className="w-24 h-auto object-contain drop-shadow-[0_0_30px_rgba(45,108,223,0.3)]"
-            style={{ filter: "brightness(1.6)" }}
+            className="w-24 h-auto object-contain drop-shadow-[0_0_30px_rgba(45,108,223,0.15)]"
             priority
           />
         </div>
@@ -288,8 +287,7 @@ export default function HeroIntro() {
             alt="Reclutia - Socios Estrategicos en Talento"
             width={480}
             height={320}
-            className="w-64 sm:w-72 md:w-80 lg:w-96 h-auto object-contain drop-shadow-[0_0_50px_rgba(45,108,223,0.2)]"
-            style={{ filter: "brightness(1.5)" }}
+            className="w-64 sm:w-72 md:w-80 lg:w-96 h-auto object-contain drop-shadow-[0_0_50px_rgba(45,108,223,0.12)]"
             priority
           />
         </div>
@@ -297,14 +295,14 @@ export default function HeroIntro() {
         {/* Decorative line */}
         <div
           ref={lineRef}
-          className="w-16 h-px bg-on-primary/25 mt-8 origin-center"
+          className="w-16 h-px bg-primary/30 mt-8 origin-center"
           style={{ opacity: 0 }}
         />
 
         {/* Title */}
         <p
           ref={titleRef}
-          className="mt-5 text-center text-sm sm:text-base md:text-lg font-body font-medium tracking-[0.18em] text-on-primary/50 uppercase max-w-[40ch] leading-relaxed"
+          className="mt-5 text-center text-sm sm:text-base md:text-lg font-body font-medium tracking-[0.18em] text-text-muted uppercase max-w-[40ch] leading-relaxed"
           style={{ opacity: 0 }}
         >
           Tu socio estrategico en la contratacion de talento
@@ -317,7 +315,7 @@ export default function HeroIntro() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
         style={{ opacity: 0 }}
       >
-        <span className="text-on-primary/35 text-xs font-body font-medium tracking-[0.2em] uppercase">
+        <span className="text-text-muted/50 text-xs font-body font-medium tracking-[0.2em] uppercase">
           Scroll
         </span>
         <svg
@@ -325,7 +323,7 @@ export default function HeroIntro() {
           height="18"
           viewBox="0 0 20 20"
           fill="none"
-          className="text-on-primary/35"
+          className="text-text-muted/50"
         >
           <path
             d="M10 4v10m0 0l-4-4m4 4l4-4"

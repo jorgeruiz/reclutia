@@ -11,6 +11,8 @@ import {
 
 export default function CTA() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
   return (
     <section id="contacto" className="relative py-24 bg-bg overflow-hidden">
@@ -110,13 +112,30 @@ export default function CTA() {
                 </div>
               ) : (
                 <form
-                  onSubmit={(e) => {
+                  onSubmit={async (e) => {
                     e.preventDefault();
+                    setSending(true);
+                    setError("");
                     const form = e.target as HTMLFormElement;
                     const data = new FormData(form);
-                    const mailto = `mailto:hugo.cortes@reclutia.com?subject=Contacto desde reclutia.com - ${data.get("empresa")}&body=Nombre: ${data.get("nombre")}%0AEmpresa: ${data.get("empresa")}%0AEmail: ${data.get("email")}%0A%0A${data.get("mensaje")}`;
-                    window.open(mailto, "_blank");
-                    setSubmitted(true);
+                    try {
+                      const res = await fetch("/api/contact", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          nombre: data.get("nombre"),
+                          empresa: data.get("empresa"),
+                          email: data.get("email"),
+                          mensaje: data.get("mensaje"),
+                        }),
+                      });
+                      if (!res.ok) throw new Error();
+                      setSubmitted(true);
+                    } catch {
+                      setError("No se pudo enviar. Intenta de nuevo o escribenos a hugo.cortes@reclutia.com");
+                    } finally {
+                      setSending(false);
+                    }
                   }}
                   className="space-y-5"
                 >
@@ -193,12 +212,17 @@ export default function CTA() {
                     />
                   </div>
 
+                  {error && (
+                    <p className="text-error text-sm font-body">{error}</p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full px-8 py-4 bg-brand-gradient text-on-primary font-body font-semibold text-base rounded-full transition-transform duration-200 active:scale-[0.98] hover:brightness-110"
+                    disabled={sending}
+                    className="w-full px-8 py-4 bg-brand-gradient text-on-primary font-body font-semibold text-base rounded-full transition-transform duration-200 active:scale-[0.98] hover:brightness-110 disabled:opacity-60 disabled:pointer-events-none"
                     style={{ transitionTimingFunction: "var(--easing)" }}
                   >
-                    Enviar mensaje
+                    {sending ? "Enviando..." : "Enviar mensaje"}
                   </button>
                 </form>
               )}

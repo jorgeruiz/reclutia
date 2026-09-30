@@ -273,10 +273,10 @@ export default function ProcesoTimeline() {
             style={{ left: "var(--line-x)" }}
           />
 
-          {/* SVG progress line */}
+          {/* SVG progress line (behind nodes) */}
           {timelineHeight > 0 && (
             <svg
-              className="absolute top-0 overflow-visible pointer-events-none"
+              className="absolute top-0 overflow-visible pointer-events-none z-0"
               style={{ left: lineX, width: 2, height: timelineHeight }}
               viewBox={`0 0 2 ${timelineHeight}`}
               preserveAspectRatio="none"
@@ -313,7 +313,9 @@ export default function ProcesoTimeline() {
                   <div
                     className={`relative z-10 w-[58px] h-[58px] md:w-[70px] md:h-[70px] rounded-[12px] flex flex-col items-center justify-center shrink-0 border-2 transition-all duration-300 ${
                       isActive
-                        ? "border-primary bg-primary/10 scale-105"
+                        ? filled
+                          ? "border-primary bg-text scale-105"
+                          : "border-primary bg-bg scale-105"
                         : filled
                           ? "border-on-primary/15 bg-text"
                           : "border-border bg-bg"

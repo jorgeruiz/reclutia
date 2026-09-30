@@ -8,7 +8,7 @@ import Servicios from "@/components/Servicios";
 
 import ProcesoTimeline from "@/components/ProcesoTimeline";
 import Diferenciadores from "@/components/Diferenciadores";
-import ServiciosComplementarios from "@/components/ServiciosComplementarios";
+
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -28,7 +28,6 @@ export default function Home() {
       <Servicios />
       <ProcesoTimeline />
       <Diferenciadores />
-      <ServiciosComplementarios />
       <FAQ />
       <CTA />
       <Footer />

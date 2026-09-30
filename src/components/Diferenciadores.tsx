@@ -5,6 +5,7 @@ import {
   Heart,
   ShieldCheck,
   UserCircle,
+  MapPin,
 } from "@phosphor-icons/react";
 
 const diferenciadores = [
@@ -26,6 +27,12 @@ const diferenciadores = [
     descripcion:
       "Trabajas directamente con un especialista que entiende tu industria. No somos un call center ni una bolsa de trabajo. Somos tu socio en la busqueda de talento.",
   },
+  {
+    icon: MapPin,
+    titulo: "Alcance Nacional",
+    descripcion:
+      "Con sede central en Monterrey, Nuevo Leon, brindamos atencion a PYMEs en toda la Republica Mexicana. Cobertura en Mexico y Estados Unidos con atencion remota y presencial adaptable a la ubicacion de tu empresa o planta operativa.",
+  },
 ];
 
 export default function Diferenciadores() {
@@ -43,8 +50,8 @@ export default function Diferenciadores() {
           </div>
         </FadeIn>
 
-        {/* 3-column cards on dark bg */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* 2x2 cards on dark bg */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {diferenciadores.map((d, i) => {
             const Icon = d.icon;
             return (

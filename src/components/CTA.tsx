@@ -50,10 +50,10 @@ export default function CTA() {
                   <div>
                     <p className="text-sm text-text-muted">Correo</p>
                     <a
-                      href="mailto:hugo.cortes@reclutia.com"
+                      href="mailto:info@reclutia.com"
                       className="text-text font-medium hover:text-primary transition-colors duration-200"
                     >
-                      hugo.cortes@reclutia.com
+                      info@reclutia.com
                     </a>
                   </div>
                 </div>
@@ -132,7 +132,7 @@ export default function CTA() {
                       if (!res.ok) throw new Error();
                       setSubmitted(true);
                     } catch {
-                      setError("No se pudo enviar. Intenta de nuevo o escribenos a hugo.cortes@reclutia.com");
+                      setError("No se pudo enviar. Intenta de nuevo o escribenos a info@reclutia.com");
                     } finally {
                       setSending(false);
                     }

@@ -79,8 +79,11 @@ export default function Hero() {
       {/* Sticky text */}
       <div data-hero-content className="sticky top-0 h-[100dvh] flex flex-col items-center justify-center z-10 px-6">
         <h1 className="text-3xl md:text-[2.75rem] lg:text-[3.5rem] font-heading font-extrabold tracking-[--heading-tracking] text-on-primary leading-[1.1] text-center max-w-[28ch]">
-          Reclutamiento y seleccion de personal para empresas de alto desempeno
+          Tu socio de negocio en procesos de gestion de talento
         </h1>
+        <p className="text-on-primary/80 text-base md:text-lg text-center max-w-[52ch] mt-6 leading-relaxed">
+          Acompanamos a micro, pequenas y medianas empresas a estructurar, profesionalizar y proteger su capital humano mediante un enfoque integral alineado al liderazgo del fundador.
+        </p>
         <div className="flex flex-col sm:flex-row gap-4 mt-10">
           <a
             href="#contacto"

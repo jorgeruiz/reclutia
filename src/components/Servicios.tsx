@@ -4,40 +4,40 @@ import { useState } from "react";
 import Image from "next/image";
 import FadeIn from "./FadeIn";
 import {
-  UsersThree,
   Buildings,
-  Translate,
-  Handshake,
+  Target,
+  GraduationCap,
+  ChartBar,
 } from "@phosphor-icons/react";
 
 const servicios = [
   {
-    icon: UsersThree,
-    titulo: "Reclutamiento operativo",
-    descripcion:
-      "Personal de linea, produccion y campo para manufactura, construccion y salud.",
-    imagen: "/images/servicios-reclutamiento.webp",
-  },
-  {
     icon: Buildings,
-    titulo: "Reclutamiento administrativo",
+    titulo: "Cultura Organizacional",
     descripcion:
-      "Perfiles de oficina, contabilidad, RRHH y coordinacion alineados a tu dinamica.",
+      "Alineacion con el objetivo estrategico del dueno. Definicion de Mision, Vision y Valores. Alineacion de cultura a los perfiles de puesto. Diseno y descripcion de competencias clave.",
     imagen: "/images/diferenciador-cultura.webp",
   },
   {
-    icon: Translate,
-    titulo: "Reclutamiento bilingue",
+    icon: Target,
+    titulo: "Atraccion y Seleccion",
     descripcion:
-      "Candidatos espanol-ingles para operaciones en Mexico y Estados Unidos.",
-    imagen: "/images/hero-home.webp",
+      "Reclutamiento y atraccion especializada. Seleccion basada en entrevista por competencias. Pruebas de confianza e integridad. Evaluaciones con servicio de Poligrafo.",
+    imagen: "/images/servicios-reclutamiento.webp",
   },
   {
-    icon: Handshake,
-    titulo: "Outsourcing de reclutamiento",
+    icon: GraduationCap,
+    titulo: "Capacitacion y Liderazgo",
     descripcion:
-      "Externalizamos tu proceso completo. Ideal para pymes sin area de RRHH.",
+      "Capacitacion en procesos de reclutamiento. Gestion del Liderazgo con sentido humano. Capacitacion en procesos de talento. Evaluacion del desempeno en equipos.",
     imagen: "/images/proceso-presentacion.webp",
+  },
+  {
+    icon: ChartBar,
+    titulo: "Retencion y Salida",
+    descripcion:
+      "Analisis estadistico de la rotacion de personal. Acciones efectivas para reducir la rotacion. Capacitacion en terminaciones laborales. Cierre legal y desvinculacion profesional.",
+    imagen: "/images/hero-home.webp",
   },
 ];
 
@@ -51,15 +51,15 @@ export default function Servicios() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14">
             <div>
               <span className="inline-block text-xs font-body font-medium uppercase tracking-[0.1em] text-primary mb-4">
-                Servicios de reclutamiento
+                Servicios PYMEs
               </span>
-              <h2 className="text-3xl md:text-[2.5rem] font-heading font-bold tracking-[--heading-tracking] text-text leading-tight max-w-[20ch]">
-                Seleccion de personal para cada nivel
+              <h2 className="text-3xl md:text-[2.5rem] font-heading font-bold tracking-[--heading-tracking] text-text leading-tight max-w-[24ch]">
+                Soluciones especializadas para PYMEs
               </h2>
             </div>
             <p className="text-text-muted text-base leading-relaxed max-w-[40ch]">
-              Cubrimos vacantes operativas, administrativas y bilingues
-              priorizando la alineacion cultural.
+              Disenadas para atender los retos de organizacion, seleccion y
+              retencion de personal.
             </p>
           </div>
         </FadeIn>

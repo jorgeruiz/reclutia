@@ -5,7 +5,7 @@ import Hero from "@/components/Hero";
 import HeroIntro from "@/components/HeroIntro";
 import Nosotros from "@/components/Nosotros";
 import Servicios from "@/components/Servicios";
-import HeadhuntingReveal from "@/components/HeadhuntingReveal";
+
 import ProcesoTimeline from "@/components/ProcesoTimeline";
 import Diferenciadores from "@/components/Diferenciadores";
 import ServiciosComplementarios from "@/components/ServiciosComplementarios";
@@ -26,7 +26,6 @@ export default function Home() {
       <Hero />
       <Nosotros />
       <Servicios />
-      <HeadhuntingReveal />
       <ProcesoTimeline />
       <Diferenciadores />
       <ServiciosComplementarios />

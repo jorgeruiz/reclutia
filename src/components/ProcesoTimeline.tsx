@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -116,9 +116,30 @@ const pasos: PasoData[] = [
 export default function ProcesoTimeline() {
   const sectionRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
+  const nodeRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [filled, setFilled] = useState(false);
   const filledRef = useRef(false);
+  const [activeCount, setActiveCount] = useState(0);
+  const [timelineHeight, setTimelineHeight] = useState(0);
 
+  const setNodeRef = useCallback((el: HTMLDivElement | null, i: number) => {
+    nodeRefs.current[i] = el;
+  }, []);
+
+  // Measure timeline height
+  useEffect(() => {
+    const container = timelineRef.current;
+    if (!container) return;
+    const measure = () => setTimelineHeight(container.offsetHeight);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(container);
+    return () => ro.disconnect();
+  }, []);
+
+  // Color reveal effect
   useEffect(() => {
     const section = sectionRef.current;
     const bg = bgRef.current;
@@ -151,6 +172,63 @@ export default function ProcesoTimeline() {
     return () => ctx.revert();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // SVG line draw + node activation
+  useEffect(() => {
+    const container = timelineRef.current;
+    const path = pathRef.current;
+    if (!container || !path || timelineHeight === 0) return;
+
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (mq.matches) {
+      path.style.strokeDashoffset = "0";
+      setActiveCount(pasos.length);
+      return;
+    }
+
+    const length = path.getTotalLength();
+    path.style.strokeDasharray = `${length}`;
+    path.style.strokeDashoffset = `${length}`;
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: container,
+        start: "top 75%",
+        end: "bottom 30%",
+        scrub: true,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          path.style.strokeDashoffset = `${length * (1 - progress)}`;
+
+          // Calculate how many nodes the line has reached
+          const nodes = nodeRefs.current;
+          if (!nodes.length) return;
+          const containerTop = container.getBoundingClientRect().top;
+          const containerH = container.offsetHeight;
+          let count = 0;
+          for (let i = 0; i < nodes.length; i++) {
+            const node = nodes[i];
+            if (!node) continue;
+            const nodeCenter =
+              node.getBoundingClientRect().top -
+              containerTop +
+              node.offsetHeight / 2;
+            const nodeProgress = nodeCenter / containerH;
+            if (progress >= nodeProgress) {
+              count = i + 1;
+            }
+          }
+          setActiveCount(count);
+        },
+      });
+    }, container);
+
+    return () => ctx.revert();
+  }, [timelineHeight]);
+
+  // Line x position: center of bullet nodes
+  const lineX = 29; // mobile
+  const lineXMd = 35; // desktop
 
   return (
     <section
@@ -188,87 +266,152 @@ export default function ProcesoTimeline() {
         </div>
 
         {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line */}
+        <div ref={timelineRef} className="relative">
+          {/* Background track line (faint) */}
           <div
-            className={`absolute left-[29px] md:left-[35px] top-0 bottom-0 w-[2px] transition-colors duration-300 ${
-              filled ? "bg-primary/40" : "bg-border"
-            }`}
+            className={`absolute top-0 bottom-0 w-[2px] transition-colors duration-300 left-[${lineX}px] md:left-[${lineXMd}px]`}
+            style={{ left: "var(--line-x)" }}
           />
 
-          <div className="flex flex-col gap-6">
-            {pasos.map((paso) => (
-              <div key={paso.numero} className="relative flex gap-5 md:gap-6 items-start">
-                {/* Bullet node */}
-                <div
-                  className={`relative z-10 w-[58px] h-[58px] md:w-[70px] md:h-[70px] rounded-[12px] flex flex-col items-center justify-center shrink-0 border-2 transition-all duration-300 ${
-                    filled
-                      ? "border-primary/60 bg-text"
-                      : "border-border bg-bg"
-                  }`}
-                >
-                  <span
-                    className={`text-sm md:text-base font-heading font-extrabold leading-none transition-colors duration-300 ${
-                      filled ? "text-primary" : "text-primary"
-                    }`}
-                  >
-                    {paso.numero}
-                  </span>
-                  <span
-                    className={`text-[9px] uppercase font-body font-bold mt-0.5 transition-colors duration-300 ${
-                      filled ? "text-[#94A3BB]" : "text-text-muted"
-                    }`}
-                  >
-                    Fase {paso.fase}
-                  </span>
-                </div>
+          {/* SVG progress line */}
+          {timelineHeight > 0 && (
+            <svg
+              className="absolute top-0 overflow-visible pointer-events-none"
+              style={{ left: lineX, width: 2, height: timelineHeight }}
+              viewBox={`0 0 2 ${timelineHeight}`}
+              preserveAspectRatio="none"
+            >
+              {/* Faint track */}
+              <path
+                d={`M1,0 L1,${timelineHeight}`}
+                stroke={filled ? "rgba(45,108,223,0.2)" : "var(--color-border)"}
+                strokeWidth="2"
+                fill="none"
+              />
+              {/* Animated progress */}
+              <path
+                ref={pathRef}
+                d={`M1,0 L1,${timelineHeight}`}
+                stroke="var(--color-primary)"
+                strokeWidth="2"
+                fill="none"
+                style={{ willChange: "stroke-dashoffset" }}
+              />
+            </svg>
+          )}
 
-                {/* Card */}
+          <div className="flex flex-col gap-6">
+            {pasos.map((paso, i) => {
+              const isActive = i < activeCount;
+              return (
                 <div
-                  className={`flex-1 rounded-[12px] p-5 md:p-6 border transition-all duration-300 ${
-                    filled
-                      ? "border-on-primary/10 backdrop-blur-[16px]"
-                      : "border-border bg-surface"
-                  }`}
-                  style={
-                    filled
-                      ? {
-                          background:
-                            "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)",
-                          boxShadow:
-                            "inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 32px rgba(0,0,0,0.2)",
-                        }
-                      : {}
-                  }
+                  key={paso.numero}
+                  ref={(el) => setNodeRef(el, i)}
+                  className="relative flex gap-5 md:gap-6 items-start"
                 >
-                  <div className="flex flex-wrap items-center gap-3 mb-2">
-                    <h3
-                      className={`text-base md:text-lg font-heading font-bold tracking-[--heading-tracking] transition-colors duration-300 ${
-                        filled ? "text-on-primary" : "text-text"
-                      }`}
-                    >
-                      {paso.titulo}
-                    </h3>
+                  {/* Bullet node */}
+                  <div
+                    className={`relative z-10 w-[58px] h-[58px] md:w-[70px] md:h-[70px] rounded-[12px] flex flex-col items-center justify-center shrink-0 border-2 transition-all duration-300 ${
+                      isActive
+                        ? "border-primary bg-primary/10 scale-105"
+                        : filled
+                          ? "border-on-primary/15 bg-text"
+                          : "border-border bg-bg"
+                    }`}
+                    style={{
+                      transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+                      boxShadow: isActive
+                        ? "0 0 20px rgba(45,108,223,0.3)"
+                        : "none",
+                    }}
+                  >
                     <span
-                      className={`text-[10px] font-body font-bold uppercase px-2.5 py-0.5 rounded-full transition-colors duration-300 ${
-                        filled
-                          ? "bg-primary/15 text-primary"
-                          : "bg-primary/10 text-primary"
+                      className={`text-sm md:text-base font-heading font-extrabold leading-none transition-colors duration-300 ${
+                        isActive ? "text-primary" : filled ? "text-on-primary/40" : "text-text-muted"
                       }`}
                     >
-                      {paso.etiqueta}
+                      {paso.numero}
+                    </span>
+                    <span
+                      className={`text-[9px] uppercase font-body font-bold mt-0.5 transition-colors duration-300 ${
+                        isActive
+                          ? "text-primary/70"
+                          : filled
+                            ? "text-on-primary/25"
+                            : "text-text-muted/50"
+                      }`}
+                    >
+                      Fase {paso.fase}
                     </span>
                   </div>
-                  <p
-                    className={`text-sm md:text-base leading-relaxed transition-colors duration-300 ${
-                      filled ? "text-[#94A3BB]" : "text-text-muted"
+
+                  {/* Card */}
+                  <div
+                    className={`flex-1 rounded-[12px] p-5 md:p-6 border transition-all duration-300 ${
+                      isActive
+                        ? filled
+                          ? "border-primary/30 backdrop-blur-[16px]"
+                          : "border-primary/30 bg-bg"
+                        : filled
+                          ? "border-on-primary/10 backdrop-blur-[16px]"
+                          : "border-border bg-surface"
                     }`}
+                    style={
+                      filled
+                        ? {
+                            background: isActive
+                              ? "linear-gradient(135deg, rgba(45,108,223,0.12) 0%, rgba(255,255,255,0.05) 100%)"
+                              : "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
+                            boxShadow: isActive
+                              ? "inset 0 1px 0 rgba(45,108,223,0.2), 0 8px 32px rgba(0,0,0,0.25)"
+                              : "inset 0 1px 0 rgba(255,255,255,0.06), 0 4px 16px rgba(0,0,0,0.15)",
+                          }
+                        : {}
+                    }
                   >
-                    {paso.descripcion}
-                  </p>
+                    <div className="flex flex-wrap items-center gap-3 mb-2">
+                      <h3
+                        className={`text-base md:text-lg font-heading font-bold tracking-[--heading-tracking] transition-colors duration-300 ${
+                          isActive
+                            ? filled
+                              ? "text-on-primary"
+                              : "text-text"
+                            : filled
+                              ? "text-on-primary/50"
+                              : "text-text/50"
+                        }`}
+                      >
+                        {paso.titulo}
+                      </h3>
+                      <span
+                        className={`text-[10px] font-body font-bold uppercase px-2.5 py-0.5 rounded-full transition-colors duration-300 ${
+                          isActive
+                            ? "bg-primary/20 text-primary"
+                            : filled
+                              ? "bg-on-primary/5 text-on-primary/30"
+                              : "bg-primary/5 text-primary/40"
+                        }`}
+                      >
+                        {paso.etiqueta}
+                      </span>
+                    </div>
+                    <p
+                      className={`text-sm md:text-base leading-relaxed transition-colors duration-300 ${
+                        isActive
+                          ? filled
+                            ? "text-[#94A3BB]"
+                            : "text-text-muted"
+                          : filled
+                            ? "text-on-primary/25"
+                            : "text-text-muted/40"
+                      }`}
+                    >
+                      {paso.descripcion}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

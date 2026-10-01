@@ -27,11 +27,10 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5">
               {[
-                "Reclutamiento operativo",
-                "Reclutamiento administrativo",
-                "Headhunting ejecutivo",
-                "Reclutamiento bilingue",
-                "Psicometrias",
+                "Cultura Organizacional",
+                "Atraccion y Seleccion",
+                "Capacitacion y Liderazgo",
+                "Retencion y Salida",
               ].map((item) => (
                 <li key={item}>
                   <span className="text-[#94A3BB] text-sm">{item}</span>
@@ -48,7 +47,6 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {[
                 { label: "Servicios", href: "#servicios" },
-                { label: "Headhunting", href: "#headhunting" },
                 { label: "Proceso", href: "#proceso" },
                 { label: "Nosotros", href: "#diferenciadores" },
                 { label: "FAQ", href: "#faq" },
@@ -74,10 +72,10 @@ export default function Footer() {
             <ul className="space-y-2.5">
               <li>
                 <a
-                  href="mailto:hugo.cortes@reclutia.com"
+                  href="mailto:info@reclutia.com"
                   className="text-[#94A3BB] text-sm hover:text-on-primary transition-colors duration-200"
                 >
-                  hugo.cortes@reclutia.com
+                  info@reclutia.com
                 </a>
               </li>
               <li>

@@ -135,14 +135,14 @@ export default function HeroIntro() {
       },
     });
 
-    /* Phase 1 — isotipo fades in with pulse */
+    /* Phase 1 - isotipo fades in with pulse */
     entryTl.fromTo(
       isotipoRef.current,
       { opacity: 0, scale: 0.85 },
       { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" }
     );
 
-    /* Phase 2 — ripple rings expand outward (staggered) */
+    /* Phase 2 - ripple rings expand outward (staggered) */
     const rings = [ring1Ref.current, ring2Ref.current, ring3Ref.current];
     rings.forEach((ring, i) => {
       entryTl.fromTo(
@@ -158,7 +158,7 @@ export default function HeroIntro() {
       );
     });
 
-    /* Phase 3 — blurred video fades in during ripples */
+    /* Phase 3 - blurred video fades in during ripples */
     entryTl.fromTo(
       bgRef.current,
       { opacity: 0 },
@@ -166,7 +166,7 @@ export default function HeroIntro() {
       "-=2.0"
     );
 
-    /* Phase 4 — isotipo blurs out */
+    /* Phase 4 - isotipo blurs out */
     entryTl.to(
       isotipoRef.current,
       {
@@ -179,7 +179,7 @@ export default function HeroIntro() {
       "-=0.6"
     );
 
-    /* Phase 5 — full logo reveals (scale overshoot) */
+    /* Phase 5 - full logo reveals (scale overshoot) */
     entryTl.fromTo(
       logoRef.current,
       { opacity: 0, scale: 0.8, filter: "blur(10px)" },
@@ -193,7 +193,7 @@ export default function HeroIntro() {
       "-=0.05"
     );
 
-    /* Phase 6 — decorative line */
+    /* Phase 6 - decorative line */
     entryTl.fromTo(
       lineRef.current,
       { scaleX: 0, opacity: 0 },
@@ -201,7 +201,7 @@ export default function HeroIntro() {
       "-=0.25"
     );
 
-    /* Phase 7 — title text */
+    /* Phase 7 - title text */
     entryTl.fromTo(
       titleRef.current,
       { opacity: 0, y: 15 },
@@ -209,7 +209,7 @@ export default function HeroIntro() {
       "-=0.15"
     );
 
-    /* Phase 8 — scroll indicator */
+    /* Phase 8 - scroll indicator */
     entryTl.fromTo(
       scrollRef.current,
       { opacity: 0, y: 8 },

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import { JsonLd } from "@/components/JsonLd";
 import { professionalServiceSchema, webSiteSchema } from "@/lib/schemas";
 import "./globals.css";
@@ -44,6 +45,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  verification: {
+    google: "T8s7T7RluySlH904Z6alMjj3zSRFJiADra9Ulskh_0w",
+  },
 };
 
 export default function RootLayout({
@@ -62,6 +66,18 @@ export default function RootLayout({
       </head>
       <body className="min-h-[100dvh] bg-bg text-text font-body antialiased">
         {children}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZN6WPL4REB"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ZN6WPL4REB');
+          `}
+        </Script>
       </body>
     </html>
   );

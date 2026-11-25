@@ -93,7 +93,7 @@ export const faqPageSchema = {
       name: "Como puedo empezar a trabajar con Reclutia?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Escribenos a hugo.cortes@reclutia.com o llena el formulario de contacto en el sitio. Un especialista se pondra en contacto contigo para entender tu necesidad y explicarte como podemos ayudarte a encontrar el talento ideal. No se requiere contrato previo para la primera consulta.",
+        text: "Escribenos a info@reclutia.com o llena el formulario de contacto en el sitio. Un especialista se pondra en contacto contigo para entender tu necesidad y explicarte como podemos ayudarte a encontrar el talento ideal. No se requiere contrato previo para la primera consulta.",
       },
     },
   ],

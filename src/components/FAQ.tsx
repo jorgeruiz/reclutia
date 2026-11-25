@@ -37,7 +37,7 @@ const faqs = [
   {
     pregunta: "Como puedo empezar a trabajar con Reclutia?",
     respuesta:
-      "Escribenos a hugo.cortes@reclutia.com o llena el formulario de contacto en el sitio. Un especialista se pondra en contacto contigo para entender tu necesidad y explicarte como podemos ayudarte a encontrar el talento ideal. No se requiere contrato previo para la primera consulta.",
+      "Escribenos a info@reclutia.com o llena el formulario de contacto en el sitio. Un especialista se pondra en contacto contigo para entender tu necesidad y explicarte como podemos ayudarte a encontrar el talento ideal. No se requiere contrato previo para la primera consulta.",
   },
 ];
 
@@ -55,10 +55,10 @@ export default function FAQ() {
               <p className="text-text-muted text-base leading-relaxed mt-4">
                 Si tienes otra duda, escribenos a{" "}
                 <a
-                  href="mailto:hugo.cortes@reclutia.com"
+                  href="mailto:info@reclutia.com"
                   className="text-primary font-medium hover:underline"
                 >
-                  hugo.cortes@reclutia.com
+                  info@reclutia.com
                 </a>
               </p>
             </div>

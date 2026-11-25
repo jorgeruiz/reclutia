@@ -4,7 +4,7 @@
 
 ## Estado actual
 
-**Ultima actualizacion:** 2026-09-09
+**Ultima actualizacion:** 2026-11-24
 **Version del sitio:** 1.0.0
 **URL de produccion:** Pendiente de deploy
 **Repo:** https://github.com/jorgeruiz/reclutia.git
@@ -63,6 +63,14 @@
 ---
 
 ## Historial de cambios
+
+### 2026-11-24 - Correo de contacto en la seccion FAQ
+
+**Cambios aplicados:**
+- La seccion Preguntas frecuentes usa info@reclutia.com en el texto bajo el H2 (mailto y texto visible) y en la respuesta "Como puedo empezar a trabajar con Reclutia?"
+- El JSON-LD FAQPage de esa misma respuesta usa info@reclutia.com
+
+**Aplicado por:** Cursor cloud agent
 
 ### 2026-09-09 - Construccion inicial
 
